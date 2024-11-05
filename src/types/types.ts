@@ -1,4 +1,4 @@
-import { Artist, ArtistOverview } from "./ArtistsType";
+import { ArtistOverview } from "./ArtistsType";
 
 export interface Album {
   uri: string;
@@ -16,7 +16,9 @@ export interface AlbumContextType {
   error: string | null;
   setError: React.Dispatch<React.SetStateAction<string | null>>;
   singleartists: ArtistOverview | undefined;
-  setSingleArtists: React.Dispatch<React.SetStateAction<ArtistOverview | undefined>>;
+  setSingleArtists: React.Dispatch<
+    React.SetStateAction<ArtistOverview | undefined>
+  >;
 }
 
 export interface Album {

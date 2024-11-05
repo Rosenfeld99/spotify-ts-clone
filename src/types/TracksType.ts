@@ -46,7 +46,7 @@ interface Album {
   coverArt: CoverArt;
 }
 
-interface CoverArt {
+export interface CoverArt {
   sources: Sources[];
 }
 
