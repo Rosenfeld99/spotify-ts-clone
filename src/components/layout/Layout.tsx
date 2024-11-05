@@ -23,15 +23,17 @@ const Layout = () => {
         alt=""
       />
       <div className="  text-accent absolute bottom-0 left-0 p-5">
-        <div className=" flex items-center gap-1">
-          <div className=" relative w-8 h-8">
-            <div className=" bg-accent h-5 w-5 rounded-full absolute z-10 top-1.5 left-1.5" />
-            <MdVerified className=" text-3xl text-[#63b5fb] absolute top-0.5 left-0.5 z-40" />
+        {singleartists?.profile?.verified && (
+          <div className=" flex items-center gap-1">
+            <div className=" relative w-8 h-8">
+              <div className=" bg-accent h-5 w-5 rounded-full absolute z-10 top-1.5 left-1.5" />
+              <MdVerified className=" text-3xl text-[#63b5fb] absolute top-0.5 left-0.5 z-40" />
+            </div>
+            <span className=" text-sm capitalize">Verifierd artist</span>
           </div>
-          <span className=" text-sm capitalize">Verifierd artist</span>
-        </div>
+        )}
         <h2 className=" text-8xl font-[600] pb-4 capitalize">
-          {singleartists?.name}
+          {singleartists?.profile?.name}
         </h2>
         <p className=" px-1.5">
           <span>

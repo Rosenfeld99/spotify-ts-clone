@@ -1,4 +1,4 @@
-import { TrackItem } from "./TracksType";
+import { CoverArt, TrackItem } from "./TracksType";
 
 export interface Artists {
   artists: Artist[];
@@ -35,20 +35,48 @@ export interface ArtistOverview {
   id: string;
   uri: string;
   following: boolean | undefined;
-  profile: object;
+  profile: Profile;
   visuals: Visuals;
   discography: Discography;
-  stats: object;
+  stats: Stats;
   relatedContent: object;
   goods: object;
 }
 
-interface Visuals {
+interface Stats {
+  followers: number;
+  monthlyListeners: number;
+  worldRank: number;
+}
+
+interface Profile {
+  name: string;
+  verified: boolean;
+  pinnedItem: PinnedItem;
+  biography: Biography;
+  externalLinks: ExternalLinks;
+}
+
+interface ExternalLinks {
+  name: string;
+  url: string;
+}
+
+interface Biography {
+  text: string;
+}
+
+interface PinnedItem {
+  comment: string;
+  type: string;
+}
+
+export interface Visuals {
   headerImage: HeaderImage;
 }
 
 interface HeaderImage {
-  sources: Sources;
+  sources: Sources[];
   extractedColors: ExtractedColors;
 }
 
@@ -66,8 +94,59 @@ interface Sources {
 
 interface Discography {
   topTracks: TopTracks;
+  popularReleases: PopularReleases;
 }
 
 interface TopTracks {
   items: TrackItem[];
+}
+
+interface PopularReleases {
+  totalCount: number;
+  items: Items[];
+}
+
+interface Items {
+  releases: Releases;
+}
+
+interface Releases {
+  items: ItemsReleases[];
+}
+
+interface ItemsReleases {
+  id: string;
+  uri: string;
+  name: string;
+  type: string;
+  copyright: Copyright;
+  date: DateRelease;
+  coverArt: CoverArt;
+  tracks: TrackTotalCount;
+  label: string;
+  playability: PlayabilityItemReleas;
+}
+
+interface PlayabilityItemReleas {
+  playable: boolean;
+  reason: string;
+}
+
+interface DateRelease {
+  year: number;
+  month: number;
+  day: number;
+  precision: string;
+}
+
+interface Copyright {
+  items: CopyrightItem;
+}
+interface CopyrightItem {
+  type: string;
+  text: string;
+}
+
+interface TrackTotalCount {
+  totalCount: number;
 }
