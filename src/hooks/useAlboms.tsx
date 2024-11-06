@@ -34,6 +34,7 @@ const useAlboms = () => {
         artist: item.data.artists.items[0].profile.name,
         coverArt: item.data.coverArt.sources[0].url,
         year: item.data.date.year,
+        artistId: item.data.artists.items[0].uri?.split(':')[2],
       })) as Album[];
 
       setAlbums(albumsItems);

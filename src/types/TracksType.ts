@@ -53,3 +53,54 @@ export interface CoverArt {
 interface Sources {
   url: string;
 }
+
+// ---- single track ---- //
+
+export interface SingleTrack {
+  album: AlbumSingleTrack;
+  artists: ArtistsSingleTrack[];
+  disc_number: number;
+  duration_ms: number;
+  explicit: boolean;
+  id: string;
+  is_local: boolean;
+  is_playable: boolean;
+  name: string;
+  popularity: number;
+  preview_url: string;
+  track_number: number;
+  type: string;
+  uri: string;
+}
+
+interface ArtistsSingleTrack {
+  id: string;
+  name: string;
+  type: string;
+  uri: string;
+}
+
+interface AlbumSingleTrack {
+  album_type: string;
+  artists: ArtistsOwneredList[];
+  id: string;
+  images: ImagesSong[];
+  is_playable: boolean;
+  name: string;
+  release_date: string;
+  release_date_precision: string;
+  total_tracks: number;
+  type: string;
+  uri: string;
+}
+
+interface ArtistsOwneredList {
+  id: string;
+  name: string;
+  type: string;
+  uri: string;
+}
+
+interface ImagesSong {
+  url: string;
+}

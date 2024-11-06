@@ -1,4 +1,6 @@
 import { ArtistOverview } from "./ArtistsType";
+import { ExploreList } from "./exploreTypes";
+import { SingleTrack } from "./TracksType";
 
 export interface Album {
   uri: string;
@@ -19,6 +21,12 @@ export interface AlbumContextType {
   setSingleArtists: React.Dispatch<
     React.SetStateAction<ArtistOverview | undefined>
   >;
+  singleSong: SingleTrack | undefined;
+  setSingleSong: React.Dispatch<React.SetStateAction<SingleTrack | undefined>>;
+  isPlaying: boolean;
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+  explorelist: ExploreList | undefined;
+  setExplorelist: React.Dispatch<React.SetStateAction<ExploreList | undefined>>;
 }
 
 export interface Album {
@@ -28,6 +36,7 @@ export interface Album {
   artist: string;
   coverArt: string;
   year: number;
+  artistId:string
 }
 
 export interface SingleAlbum {

@@ -12,7 +12,7 @@ const CardList = ({ open }: CardListProps) => {
     variants={containerCard}
     initial="hidden"
     animate="visible"
-      className={` 
+      className={`
         ${
         open ? "px-3" : " w-fit"
       }`}
