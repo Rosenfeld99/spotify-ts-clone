@@ -81,7 +81,7 @@ const Sider = () => {
           </ul>
         </header>
         <main
-          className={`bg-secondary rounded-t-lg flex flex-col flex-grow ${
+          className={`bg-secondary rounded-t-lg flex flex-col w-full flex-grow ${
             !open && "w-fit items-center"
           }`}
         >
@@ -132,9 +132,9 @@ const Sider = () => {
           {/* Card sider playlists */}
         </main>
       </div>
-      <div className="h-full overflow-y-auto scroll-container bg-secondary rounded-b-lg">
-
+      <div className={`h-full overflow-y-auto scroll-container bg-secondary rounded-b-lg`}>
       <CardList open={open} />
+
       </div>
     </div>
   );

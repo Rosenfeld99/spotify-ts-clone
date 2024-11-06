@@ -9,19 +9,23 @@ const Layout = () => {
       <div
         className={`bg-[${singleartists?.visuals?.headerImage?.extractedColors?.colorRaw?.hex}] w-full h-[24.5rem] absolute top-0`}
       />
-      <img
-        className=" w-full h-[24.5rem] object-cover object-center"
-        // src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-        src={
-          // singleartists?.images &&
-          // singleartists?.images[0] &&
-          // singleartists?.images[0].url
-          singleartists?.visuals?.headerImage?.sources &&
-          singleartists?.visuals?.headerImage?.sources[0]?.url &&
-          singleartists?.visuals?.headerImage?.sources[0]?.url
-        }
-        alt=""
-      />
+      <div className=" relative">
+        <img
+          className={` w-full h-[19rem] object-cover object-top bg-[${singleartists?.visuals?.headerImage?.extractedColors?.colorRaw?.hex}]`}
+          src={
+            (singleartists?.visuals?.headerImage?.sources &&
+              singleartists?.visuals?.headerImage?.sources[0]?.url &&
+              singleartists?.visuals?.headerImage?.sources[0]?.url) ||
+            (singleartists?.discography?.topTracks?.items[0] &&
+              singleartists?.discography?.topTracks?.items[0].track.album
+                .coverArt.sources &&
+              singleartists?.discography?.topTracks?.items[0].track.album
+                .coverArt.sources[0].url)
+          }
+          alt=""
+        />
+        <div className=" absolute inset-0 bg-gradient-to-t from-[#00000085] to-[#00000000] w-full h-full" />
+      </div>
       <div className="  text-accent absolute bottom-0 left-0 p-5">
         {singleartists?.profile?.verified && (
           <div className=" flex items-center gap-1">

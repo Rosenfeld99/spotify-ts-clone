@@ -2,40 +2,53 @@ import { useState } from "react";
 import { TrackItem } from "../../types/TracksType";
 import { BsFillPlayFill } from "react-icons/bs";
 import { formatMilliseconds } from "../../utils/logic/logic";
+import useTrack from "../../hooks/useTrack";
+import { MdGraphicEq } from "react-icons/md";
 
 interface TrackProps {
   topTracks: TrackItem[];
 }
 
 const TrackViewItem = ({ topTracks }: TrackProps) => {
-  console.log(topTracks);
+  // console.log(topTracks);
+  const { fetchSingleSong, singleSong, isPlaying } = useTrack();
 
-  const [hoveredIndex, setHoveredIndex] = useState<number>(-1);
-  const handleMouseEnter = (index: number) => {
-    setHoveredIndex(index);
+  const [hoveredIndex, setHoveredIndex] = useState<string>(
+    singleSong?.id || ""
+  );
+  const handleMouseEnter = (id: string) => {
+    setHoveredIndex(id);
   };
 
   const handleMouseLeave = () => {
-    setHoveredIndex(-1);
+    setHoveredIndex("");
   };
 
   return (
     <div>
       {topTracks?.map((item, i) => (
         <div
-          onMouseEnter={() => handleMouseEnter(i)}
+          onMouseEnter={() => handleMouseEnter(item?.track?.id)}
           onMouseLeave={handleMouseLeave}
           className=" felx group items-center justify-around hover:bg-btn_sidebar_hover p-2 rounded px-4"
         >
           <div className=" flex  items-center justify-between ">
             <div className="flex items-center gap-2 w-full">
               <p
+                onClick={() => {
+                  fetchSingleSong(item?.track?.id);
+                }}
                 className={` w-10 ${
-                  i === 0 ? " text-btns_color" : "text-neutral"
+                  item?.track?.id == singleSong?.id
+                    ? " text-btns_color"
+                    : "text-neutral"
                 }`}
               >
-                {hoveredIndex === i ? (
+                {hoveredIndex == item?.track?.id ? (
                   <BsFillPlayFill className=" text-accent" />
+                ) : // <MdGraphicEq /> //--> if i splayong
+                isPlaying && item?.track?.id == singleSong?.id ? (
+                  <MdGraphicEq className="text-btns_color text-xl mr-2"/>
                 ) : (
                   i + 1
                 )}
@@ -50,7 +63,9 @@ const TrackViewItem = ({ topTracks }: TrackProps) => {
               />
               <p
                 className={`capitalize hover:underline ${
-                  i === 0 ? " text-btns_color" : "text-neutral"
+                  item?.track?.id == singleSong?.id
+                    ? " text-btns_color"
+                    : "text-neutral"
                 }`}
               >
                 {item?.track.name}

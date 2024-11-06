@@ -4,9 +4,11 @@ import Sider from "../components/sider/Sider";
 import SongControler from "../components/songConrcoler/SongControler";
 import Nav from "../components/nav/Nav";
 import ArtistDetaile from "../pages/ArtistDetaile";
+import useTrack from "../hooks/useTrack";
+import ExplorePage from "../pages/ExplorePage";
 
 const AppRputes = () => {
-
+  const { singleSong } = useTrack();
 
   return (
     <div className=" bg-primary select-none h-screen w-full overflow-hidden flex flex-col gap-2 p-2">
@@ -21,6 +23,7 @@ const AppRputes = () => {
             <Routes>
               <Route index element={<Home />} />
               <Route path="/artist/:artistId" element={<ArtistDetaile />} />
+              <Route path="/search" element={<ExplorePage />} />
               <Route
                 path="/*"
                 element={
@@ -32,7 +35,7 @@ const AppRputes = () => {
             </Routes>
           </div>
         </div>
-        <SongControler />
+        {singleSong?.id && <SongControler />}
       </BrowserRouter>
     </div>
   );
