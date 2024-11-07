@@ -1,6 +1,7 @@
 import { ArtistOverview } from "./ArtistsType";
 import { ExploreList } from "./exploreTypes";
 import { SingleTrack } from "./TracksType";
+import { CurrUser } from "./userType";
 
 export interface Album {
   uri: string;
@@ -10,7 +11,7 @@ export interface Album {
   year: number;
 }
 
-export interface AlbumContextType {
+export interface ContextType {
   albums: Album[];
   setAlbums: React.Dispatch<React.SetStateAction<Album[]>>;
   loading: boolean;
@@ -27,6 +28,8 @@ export interface AlbumContextType {
   setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
   explorelist: ExploreList | undefined;
   setExplorelist: React.Dispatch<React.SetStateAction<ExploreList | undefined>>;
+  user: CurrUser | undefined;
+  setUser: React.Dispatch<React.SetStateAction<CurrUser | undefined>>;
 }
 
 export interface Album {

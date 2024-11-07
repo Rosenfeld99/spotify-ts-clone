@@ -1,14 +1,16 @@
 import React, { createContext, useContext, useState } from "react";
-import { Album, AlbumContextType } from "../types/types";
+import { Album, ContextType } from "../types/types";
 import { ArtistOverview } from "../types/ArtistsType";
 import { SingleTrack } from "../types/TracksType";
 import { ExploreList } from "../types/exploreTypes";
+import { CurrUser } from "../types/userType";
 
-const SpotifyContext = createContext<AlbumContextType | undefined>(undefined);
+const SpotifyContext = createContext<ContextType | undefined>(undefined);
 
 export const SpotifyContextProvider: React.FC<{
   children: React.ReactNode;
 }> = ({ children }) => {
+  const [user, setUser] = useState<CurrUser>();
   const [albums, setAlbums] = useState<Album[]>([]);
   // const [singleAlbums, setSingleAlbums] = useState<Album[]>([]);
   // const [artists, setArtists] = useState<Artists[]>([]);
@@ -36,6 +38,8 @@ export const SpotifyContextProvider: React.FC<{
         setIsPlaying,
         explorelist,
         setExplorelist,
+        user,
+        setUser,
       }}
     >
       {children}
