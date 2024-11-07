@@ -1,4 +1,5 @@
 import { containerCard } from "../../../animation/animationMoution";
+import useUser from "../../../hooks/useUser";
 import CardItem from "./CardItem";
 import {motion} from 'framer-motion'
 
@@ -7,6 +8,7 @@ interface CardListProps {
 }
 
 const CardList = ({ open }: CardListProps) => {
+  const {user} = useUser()
   return (
     <motion.ul
     variants={containerCard}
@@ -17,8 +19,8 @@ const CardList = ({ open }: CardListProps) => {
         open ? "px-3" : " w-fit"
       }`}
     >
-      {Array.from({ length: 70 }).map((card, index) => (
-        <CardItem open={open} />
+      {user?.public_playlists?.map((card, index) => (
+        <CardItem open={open} card={card} key={card.uri}/>
       ))}
     </motion.ul>
   );

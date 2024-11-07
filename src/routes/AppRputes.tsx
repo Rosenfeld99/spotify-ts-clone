@@ -6,9 +6,16 @@ import Nav from "../components/nav/Nav";
 import ArtistDetaile from "../pages/ArtistDetaile";
 import useTrack from "../hooks/useTrack";
 import ExplorePage from "../pages/ExplorePage";
+import useUser from "../hooks/useUser";
+import { useEffect } from "react";
 
 const AppRputes = () => {
   const { singleSong } = useTrack();
+  const { fetchUser } = useUser();
+
+  useEffect(() => {
+    // fetchUser("dwxc9uytfpa20ttx255rlf5m9");
+  }, []);
 
   return (
     <div className=" bg-primary select-none h-screen w-full overflow-hidden flex flex-col gap-2 p-2">

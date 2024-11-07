@@ -13,7 +13,7 @@ const ArtistDetaile = () => {
 
   useEffect(() => {
     // artistId && fetchSingleArtist(artistId);
-    artistId && fetchAtistOverview(artistId);
+    // artistId && fetchAtistOverview(artistId);
   }, [artistId]);
   return (
     <div>
